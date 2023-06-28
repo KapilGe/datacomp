@@ -1,0 +1,6 @@
+<div *ngIf="detail !== undefined">
+    <div *ngFor="let e of detail | keyvalue">
+      {{ e.key  }}-{{ e.value }}
+    </div>
+  </div>
+  

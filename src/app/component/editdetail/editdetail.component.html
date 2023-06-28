@@ -1,0 +1,21 @@
+<form #editdetail="ngForm" (ngSubmit)="onClickSubmit(editdetail)">
+    <input type="hidden" name="id" [(ngModel)]="detail.id" />
+    <label>Brand</label>
+    <input
+      type="text"
+      name="brand"
+      placeholder="brand"
+      [(ngModel)]="detail.brand"
+    />
+    <br />
+    <label>Category</label>
+    <input
+      type="text"
+      name="category"
+      placeholder="category"
+      [(ngModel)]="detail.category"
+    />
+    <br />
+    <input type="submit" value="submit" />
+  </form>
+  

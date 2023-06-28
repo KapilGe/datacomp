@@ -1,0 +1,80 @@
+<table
+  mat-table
+  style="width:100%"
+  [dataSource]="dataSource"
+  class="mat-elevation-z8"
+  [hidden]="!dataSource"
+  matSort
+  #sort="matSort"
+>
+  <!-- <tr>
+    <th>Brand</th>
+    <th>Category</th>
+    <th>Descriptiion</th>
+    <th>Price</th>
+    <th>Rating</th>
+    <th>Stock</th>
+    <th>id</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>
+      {{ user.brand }}
+    </td>
+    <td>{{ user.category }}</td>
+    <td>{{ user.description }}</td>
+    <td>{{ user.price }}</td>
+    <td>{{ user.rating }}</td>
+    <td>{{ user.stock }}</td>
+    <td>
+      <a style="color:rgb(66, 135, 245);text-decoration:underline">{{
+        user.id
+      }}</a>
+    </td>
+    <td (click)="editdetail(user.id)">
+      <button mat-raised-button>Edit</button>
+    </td>
+    <td (click)="userDetail(user.id)"><button>View</button></td>
+    <td (click)="deleteUser(user.id)"><button>Delete</button></td>
+  </tr> -->
+  <ng-container matColumnDef="brand">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Brand</th>
+    <td mat-cell *matCellDef="let element">{{ element.brand }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>categor</th>
+    <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Desc.</th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon (click)="editdetail(element.id)">edit</mat-icon>
+      <mat-icon (click)="userDetail(element.id)">pageview</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator
+  #paginator
+  [pageSize]="10"
+  [length]="length"
+  showFirstLastButtons
+>
+</mat-paginator>
+ <viewdetail *ngIf="user" [info]="user"></viewdetail>
+<editdetail *ngIf="" [edit]="useredit"></editdetail> 
